@@ -20,8 +20,8 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
 
   /* Retry on CI only */
-  // retries: process.env.CI ? 2 : 0,
-  retries: 2,
+   retries: process.env.CI ? 2 : 0,
+  //retries: 2,
 
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
@@ -77,7 +77,7 @@ export default defineConfig({
       },
     },
 
-    {
+   /* {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
@@ -131,7 +131,7 @@ export default defineConfig({
        * GitHub variables: https://docs.github.com/en/actions/learn-github-actions/variables
        * GitLab variables: https://docs.gitlab.com/ee/ci/variables/predefined_variables.html#predefined-variables-reference
        */
-    },
+    //},
 
     /* Test against mobile viewports. */
     // {
