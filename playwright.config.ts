@@ -1,11 +1,12 @@
-import { defineConfig, devices } from '@playwright/test';
-import baseEnvUrl from './utils/environmentBaseUrl';
-
+import { defineConfig, devices } from "@playwright/test";
+import baseEnvUrl from "./utils/environmentBaseUrl";
+import dotenv from "dotenv";
+dotenv.config();
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-require('dotenv').config();
+//equire('dotenv').config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -20,14 +21,14 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
 
   /* Retry on CI only */
-   retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 0,
   //retries: 2,
 
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: "html",
   // reporter: [['html', { open: 'always' }]], //always, never and on-failure (default).
   // reporter: [['html', { outputFolder: 'my-report' }]], // report is written into the playwright-report folder in the current working directory. override it using the PLAYWRIGHT_HTML_REPORT
   // reporter: 'dot',
@@ -39,30 +40,30 @@ export default defineConfig({
     ],
   */
   /**
-   * custom reports: https://playwright.dev/docs/test-reporters#custom-reporters 
-  */
-  
+   * custom reports: https://playwright.dev/docs/test-reporters#custom-reporters
+   */
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
+    trace: "on-first-retry",
+    screenshot: "only-on-failure",
     // headless: false,
     // ignoreHTTPSErrors: true,
     // viewport: { width: 1280, height: 720 },
     // video: 'on-first-retry',
   },
-    // timeout: 30000, //https://playwright.dev/docs/test-timeouts
-    // expect: {
-      /**
-       * Maximum time expect() should wait for the condition to be met.
-       * For example in `await expect(locator).toHaveText();`
-       */
-      // timeout: 10000,
-    // },
+  // timeout: 30000, //https://playwright.dev/docs/test-timeouts
+  // expect: {
+  /**
+   * Maximum time expect() should wait for the condition to be met.
+   * For example in `await expect(locator).toHaveText();`
+   */
+  // timeout: 10000,
+  // },
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   // outputDir: 'test-results/',
@@ -70,14 +71,14 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { 
-        ...devices['Desktop Chrome'],
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"],
         // viewport: { width: 1280, height: 720 },
       },
     },
 
-   /* {
+    /* {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
